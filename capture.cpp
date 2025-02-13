@@ -9,13 +9,20 @@ int main() {
         return -1;
     }
 
+    cv::namedWindow("Video", cv::WINDOW_AUTOSIZE); // Cria uma janela com o nome "Video"
+
     while (true) {
         cv::Mat frame; // Isso inicializa um matriz n-dimensional para guardar cada quadro da minha câmera
-        cam.read(frame); // Pego os quadros que minha câmera está gerando e coloco dentro da matriz que criei
+        cam >> frame; // Pego os quadros que minha câmera está gerando e coloco dentro da matriz que criei
         if (frame.empty()) break; // Caso a câmera não escreva nada na matriz, paro o programa
         cv::imshow("Video", frame); // Cria uma janela para mostrar o frame que criei com o nome "Video"
+        
+        if (cv::waitKey(1) == 27) { // Para se a tecla ESC for pressionada 
+            break;
+        }
 
-        if (cv::waitKey(1) >= 0); br
     }
-
+    // 4. Liberar recursos
+    cam.release(); // Destrutor do meu objeto camera
+    cv::destroyAllWindows(); // Fecha as janelas abertas
 }
