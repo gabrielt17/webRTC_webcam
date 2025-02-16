@@ -1,40 +1,32 @@
 {
-    "version": "2.0.0",
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: Build and Run",
+            "label": "C/C++: g++ build src/offer.cpp",
             "command": "/usr/bin/g++",
             "args": [
                 "-std=c++17",
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "src/offer.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
-                "`pkg-config --cflags --libs opencv4`",
-                "-ldatachannel",
+                "src/offer",
+                "$(shell pkg-config --cflags opencv4 libdatachannel)",
+                "$(shell pkg-config --libs opencv4 libdatachannel)",
                 "-lpthread"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": ["$gcc"],
+            "problemMatcher": [
+                "$gcc"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Task generated for compiling C++ code with OpenCV and libdatachannel."
-        },
-        {
-            "label": "Run Executable",
-            "type": "shell",
-            "command": "${fileDirname}/${fileBasenameNoExtension}",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
-            "problemMatcher": []
+            "detail": "Task generated for compiling src/offer.cpp with OpenCV and libdatachannel."
         }
-    ]
+    ],
+    "version": "2.0.0"
 }
