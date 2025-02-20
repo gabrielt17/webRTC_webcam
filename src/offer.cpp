@@ -17,7 +17,7 @@ int main(){
     auto videoTrack = peer->addTrack(rtc::Description::Video("video"));
 
     peer->onLocalDescription([&](rtc::Description sdp) {
-        std::cout << "Meu sdp: \n" << sdp << std::endl;
+        std::cout << "Meu sdp: \n" << sdp <<  std::endl;
     });
 
     peer->onLocalCandidate([&](rtc::Candidate candidate) {
